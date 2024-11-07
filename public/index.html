@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Money Expenses</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-container">
+    <div class="app-container">
+      <header class="header">
+        <h1 class="logo-title">
+          <span class="logo-icon">💸</span> Money Expenses
+        </h1>
+      </header>
+    </div>
+    
+    <section id="summary">
+      <h3>Resumo Financeiro</h3>
+      <div class="summary-cards">
+        <div class="summary-card">
+          <div class="card-icon">
+            <i class="fas fa-arrow-up"></i>
+          </div>
+          <div class="card-content">
+            <p><strong>Entradas</strong></p>
+            <p id="total-incomes">R$ 0,00</p>
+          </div>
+        </div>
+        <div class="summary-card">
+          <div class="card-icon">
+            <i class="fas fa-arrow-down"></i>
+          </div>
+          <div class="card-content">
+            <p><strong>Despesas</strong></p>
+            <p id="total-expenses">R$ 0,00</p>
+          </div>
+        </div>
+        <div class="summary-card">
+          <div class="card-icon">
+            <i class="fas fa-wallet"></i>
+          </div>
+          <div class="card-content">
+            <p><strong>Saldo</strong></p>
+            <p id="balance">R$ 0,00</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+
+    <div class="main-content">
+      <div class="forms-container">
+        <form id="expense-form" class="form">
+          <h2>Adicionar Despesa</h2>
+          <label for="description">Descrição:</label>
+          <input type="text" id="description" name="description" required placeholder="Ex: Compra de supermercado">
+          
+          <label for="amount">Valor:</label>
+          <input type="number" id="amount" name="amount" required placeholder="Ex: 50,00">
+          
+          <button type="submit">Adicionar Despesa</button>
+        </form>
+
+        <form id="income-form" class="form">
+          <h2>Adicionar Entrada</h2>
+          <label for="income-description">Fonte de Entrada:</label>
+          <input type="text" id="income-description" name="income-description" required placeholder="Ex: Salário, Freelance">
+          
+          <label for="income-amount">Valor da Entrada:</label>
+          <input type="number" id="income-amount" name="income-amount" required placeholder="Ex: 1000,00">
+          
+          <button type="submit">Adicionar Entrada</button>
+        </form>
+      </div>
+
+      <div class="lists-container">
+        <section id="expenses-section" class="section">
+          <h2>Minhas Despesas</h2>
+          <div id="expenses-list" class="list"></div>
+        </section>
+
+        <section id="incomes-section" class="section">
+          <h2>Minhas Entradas</h2>
+          <div id="incomes-list" class="list"></div>
+        </section>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <p>© 2024 Money Expenses. Todos os direitos reservados.</p>
+    </footer>
+  </div>
+
+  <script>
+    let totalIncomes = 0;
+    let totalExpenses = 0;
+
+    // Função para formatar a data (dia e mês)
+    function formatDate(dateString) {
+      const options = { day: '2-digit', month: '2-digit' };
+      const date = new Date(dateString);
+      return date.toLocaleDateString('pt-BR', options);
+    }
+
+    // Adicionar Despesa
+    document.getElementById('expense-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const description = document.getElementById('description').value;
+      const amount = document.getElementById('amount').value;
+      
+      fetch('http://localhost:3000/despesas', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ description, amount })
+      })
+      .then(response => response.json())
+      .then(data => {
+        alert('Despesa adicionada com sucesso!');
+        loadExpenses();
+      })
+      .catch(error => console.error('Erro ao adicionar despesa:', error));
+    });
+
+    // Adicionar Entrada
+    document.getElementById('income-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const description = document.getElementById('income-description').value;
+      const amount = document.getElementById('income-amount').value;
+      
+      fetch('http://localhost:3000/entrada', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ description, amount })
+      })
+      .then(response => response.json())
+      .then(data => {
+        alert('Entrada adicionada com sucesso!');
+        loadIncomes();
+      })
+      .catch(error => console.error('Erro ao adicionar entrada:', error));
+    });
+
+    // Carregar Despesas
+    function loadExpenses() {
+      fetch('http://localhost:3000/despesas')
+        .then(response => response.json())
+        .then(data => {
+          const list = document.getElementById('expenses-list');
+          totalExpenses = data.reduce((total, expense) => total + parseFloat(expense.amount), 0);
+
+          list.innerHTML = '';
+          data.forEach(expense => {
+            const li = document.createElement('li');
+            li.classList.add('expense-item');
+            li.innerHTML = `
+              <span class="description">${expense.description}</span>
+              <span class="amount">R$ ${expense.amount}</span>
+              <span class="date">${formatDate(expense.date)}</span>
+            `;
+            list.appendChild(li);
+          });
+
+          document.getElementById('total-expenses').innerText = `R$ ${totalExpenses.toFixed(2)}`;
+          updateBalance();
+        })
+        .catch(error => console.error('Erro ao carregar despesas:', error));
+    }
+
+    // Carregar Entradas
+    function loadIncomes() {
+      fetch('http://localhost:3000/entrada')
+        .then(response => response.json())
+        .then(data => {
+          const list = document.getElementById('incomes-list');
+          totalIncomes = data.reduce((total, income) => total + parseFloat(income.amount), 0);
+
+          list.innerHTML = '';
+          data.forEach(income => {
+            const li = document.createElement('li');
+            li.classList.add('income-item');
+            li.innerHTML = `
+              <span class="description">${income.description}</span>
+              <span class="amount">R$ ${income.amount}</span>
+              <span class="date">${formatDate(income.date)}</span>
+            `;
+            list.appendChild(li);
+          });
+
+          document.getElementById('total-incomes').innerText = `R$ ${totalIncomes.toFixed(2)}`;
+          updateBalance();
+        })
+        .catch(error => console.error('Erro ao carregar entradas:', error));
+    }
+
+ // Atualizar Saldo
+function updateBalance() {
+  const balance = totalIncomes - totalExpenses;
+  const balanceElement = document.getElementById('balance');
+  
+  balanceElement.innerText = `R$ ${balance.toFixed(2)}`;
+  
+  if (balance >= 0) {
+    balanceElement.classList.add('saldo-positivo');
+    balanceElement.classList.remove('saldo-negativo');
+  } else {
+    balanceElement.classList.add('saldo-negativo');
+    balanceElement.classList.remove('saldo-positivo');
+  }
+}
+
+    // Inicializar as listas
+    loadExpenses();
+    loadIncomes();
+  </script>
+</body>
+</html>

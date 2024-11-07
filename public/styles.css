@@ -1,0 +1,439 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f9;
+  color: #333;
+}
+
+/* Container principal */
+.app-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Cabeçalho */
+.header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  color: #2c3e50;
+}
+
+/* Formulários */
+.forms-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.form {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 48%;
+}
+
+.form h2 {
+  font-size: 1.5rem;
+  margin-bottom: 12px;
+}
+
+.form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.form button {
+  width: 100%;
+  padding: 10px;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.form button:hover {
+  background-color: #2980b9;
+}
+
+/* Listas de despesas e entradas */
+.lists-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.section {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 48%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.section h2 {
+  font-size: 1.5rem;
+  margin-bottom: 12px;
+  color: #2c5038;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.list li {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  padding: 12px;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  font-size: 1rem;
+  width: 100%;
+  max-width: 500px;
+  border: 1px solid #ddd; /* Adicionada borda de separação visível */
+}
+
+.list li .description {
+  font-weight: bold;
+  color: #333;
+  text-align: left;
+  width: 40%;
+  padding-right: 10px;
+  border-right: 1px solid #3498db; /* Linha azul visível entre descrição e valor */
+}
+
+.list li .amount {
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-align: right;
+  width: 30%;
+  padding-right: 10px;
+  border-right: 1px solid #3498db; /* Linha azul visível entre valor e data */
+}
+
+.list li .date {
+  font-size: 0.9rem;
+  color: #888;
+  text-align: center;
+  width: 30%;
+  padding-left: 10px;
+}
+
+/* Estilos específicos para Despesas e Entradas */
+#expenses-list li {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+#incomes-list li {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f9;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Container principal */
+.app-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Cabeçalho */
+.header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  color: #2c3e50;
+}
+
+/* Formulários */
+.forms-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.form {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 48%;
+}
+
+.form h2 {
+  font-size: 1.6rem;
+  margin-bottom: 12px;
+  color: #2c3e50;
+}
+
+.form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.form button {
+  width: 100%;
+  padding: 12px;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+
+.form button:hover {
+  background-color: #2980b9;
+}
+
+/* Listas de despesas e entradas */
+.lists-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.section {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 48%;
+  display: flex;
+  flex-direction: column;
+}
+
+.section h2 {
+  font-size: 1.6rem;
+  margin-bottom: 15px;
+  color: #2c3e50;
+}
+
+.list {
+  list-style-type: none;
+  margin-top: 10px;
+}
+
+.list .expense-item, .list .income-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  margin-bottom: 10px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.list .expense-item:hover, .list .income-item:hover {
+  background-color: #ecf0f1;
+}
+
+.list .description {
+  flex: 2;
+  font-weight: 500;
+}
+
+.list .amount {
+  flex: 1;
+  text-align: right;
+  font-weight: bold;
+}
+
+.list .date {
+  flex: 1;
+  text-align: center;
+  color: #7f8c8d;
+}
+
+/* Resumo Financeiro */
+#summary {
+  background-color: #fff5f5;
+  padding: 40px 100px;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 1200px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin: 30px auto;
+}
+
+#summary h3 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.summary-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.summary-card {
+  background-color: #f7f7f7;
+  padding: 10px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 12px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  text-align: center;
+}
+
+.summary-card:hover {
+  transform: translateY(-5px);
+}
+
+.card-icon {
+  font-size: 2.5rem;
+  color: #4CAF50;
+  margin-right: 20px;
+}
+
+.card-content {
+  flex: 1;
+}
+
+.card-content p {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.card-content p#total-incomes,
+.card-content p#total-expenses,
+.card-content p#balance {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+#total-incomes {
+  color: #4CAF50;
+}
+
+#total-expenses {
+  color: #F44336;
+}
+
+#balance {
+  color: #2196F3;
+}
+
+
+
+
+.logo-title {
+  font-family: 'Arial', sans-serif;
+  font-size: 2.5em;
+  color: #fff;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-icon {
+  font-size: 1.2em;
+  margin-right: 10px;
+  animation: bounce 1s infinite; /* Adiciona um pequeno efeito de animação */
+}
+
+/* Animação para o ícone */
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Resumo Financeiro - Cores */
+.summary-card.entradas {
+  color: #155724; /* Verde para entradas */
+}
+
+.summary-card.despesas {
+  color: #721c24; /* Vermelho para despesas */
+}
+
+.summary-card.saldo-positivo {
+  color: #155724; /* Verde para saldo positivo */
+}
+
+.summary-card.saldo-negativo {
+  color: #721c24; /* Vermelho para saldo negativo */
+}
+
+
+
+/* Ícones Font Awesome */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');

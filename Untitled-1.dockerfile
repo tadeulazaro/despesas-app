@@ -1,0 +1,1 @@
+MONGODB_URI=mongodb+srv://despesas:96958603Miguela@despesas01.8gqvt.mongodb.net/despesas?retryWrites=true&w=majority&appName=Despesas01
