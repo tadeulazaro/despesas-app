@@ -1,0 +1,4 @@
+docker file
+
+ docker container ls (lista container)
+

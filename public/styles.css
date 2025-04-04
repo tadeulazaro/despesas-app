@@ -311,7 +311,7 @@ body {
 
 /* Resumo Financeiro */
 #summary {
-  background-color: #fff5f5;
+  background-color: #cee4f3;
   padding: 40px 100px;
   border-radius: 10px;
   width: 100%;
@@ -432,6 +432,70 @@ body {
 .summary-card.saldo-negativo {
   color: #721c24; /* Vermelho para saldo negativo */
 }
+
+/* Estilos responsivos para telas menores */
+@media (max-width: 768px) {
+  /* Ajusta o espaçamento interno e reduz as larguras */
+  .app-container {
+    padding: 10px;
+  }
+
+  /* Centraliza os formulários em uma coluna no mobile */
+  .forms-container, .lists-container {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  /* Ajusta a largura dos formulários para ocupar toda a tela */
+  .form, .section {
+    width: 100%;
+  }
+
+  /* Ajusta o cabeçalho para tamanhos menores */
+  .header h1 {
+    font-size: 2rem;
+  }
+
+  /* Ajusta o layout dos cartões de resumo financeiro */
+  .summary-cards {
+    grid-template-columns: 1fr; /* Cada card ocupa uma linha inteira */
+  }
+
+  /* Ajuste do texto e ícones para manter o layout compacto */
+  .card-content p {
+    font-size: 1rem;
+  }
+  
+  .logo-title {
+    font-size: 2rem;
+  }
+
+  .list li {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  /* Ajusta o espaçamento entre os itens da lista */
+  .list li .description, .list li .amount, .list li .date {
+    width: 100%;
+    padding: 5px 0;
+    text-align: left;
+  }
+}
+
+#alert-message {
+  text-align: center;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+#balance-message {
+  font-size: 18px;
+  color: green;
+}
+
+
 
 
 

@@ -11,7 +11,8 @@ const expenseSchema = new mongoose.Schema({
   },
   date: {
     type: Date,
-    default: Date.now // Adiciona a data atual
+    required: true
+    //default: Date.now // Adiciona a data atual
   }
 });
 

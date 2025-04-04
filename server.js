@@ -28,7 +28,7 @@ app.post('/despesas', async (req, res) => {
 // Rota para listar todas as despesas
 app.get('/despesas', async (req, res) => {
   try {
-    const expenses = await Expense.find();
+    const expenses = await Expense.find().limit(10);
     res.status(200).send(expenses);
   } catch (error) {
     res.status(500).send(error);
@@ -49,7 +49,7 @@ app.post('/entrada', async (req, res) => {
 // Rota para listar todas as entradas
 app.get('/entrada', async (req, res) => {
   try {
-    const entradas = await Entrada.find(); // Buscando todas as entradas no banco
+    const entradas = await Entrada.find().limit(10); // Buscando todas as entradas no banco
     res.status(200).send(entradas); // Retornando as entradas
   } catch (error) {
     res.status(500).send(error);
